@@ -255,20 +255,4 @@ public class TrafficLight extends JFrame {
         yellow.setIcon(offImage);
         System.out.println("turnOff Yellow Light");
     }
-
-    public void setRedTime(int time) {
-        redTime = time;
-    }
-
-    public void setGreenTime(int time) {
-        greenTime = time;
-    }
-
-    public void setRightGreenTime(int time) {
-        rightGreenTime = time;
-    }
-
-    public void setYellowTime(int time) {
-        yellowTime = time;
-    }
 }
