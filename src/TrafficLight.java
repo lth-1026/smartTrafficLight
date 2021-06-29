@@ -51,8 +51,6 @@ public class TrafficLight extends JFrame {
         guiTrafficLight.add(green);
 
         JPanel guiButton = new JPanel();
-        guiButton.setSize(400, 100);
-        guiButton.setBackground(Color.RED);
         JButton b1 = new JButton("실행");
         JButton b2 = new JButton("정지");
         JButton b3 = new JButton("점등");
@@ -96,8 +94,58 @@ public class TrafficLight extends JFrame {
         guiButton.add(b4);
 
         JPanel guiText = new JPanel();
-        guiText.setSize(400, 150);
-        guiText.setBackground(Color.GREEN);
+        guiText.setLayout(new BorderLayout());
+
+        JPanel redInput = new JPanel();
+        redInput.setLayout(new BoxLayout(redInput, BoxLayout.X_AXIS));
+        redInput.add(new JLabel(" red"));
+        JTextField redText = new JTextField(Integer.toString(redTime));
+        redInput.add(redText);
+        redInput.add(new JLabel("초 "));
+
+        JPanel yellowInput = new JPanel();
+        yellowInput.setLayout(new BoxLayout(yellowInput, BoxLayout.X_AXIS));
+        yellowInput.add(new JLabel(" yellow"));
+        JTextField yellowText = new JTextField(Integer.toString(yellowTime));
+        yellowInput.add(yellowText);
+        yellowInput.add(new JLabel("초 "));
+
+        JPanel rightInput = new JPanel();
+        rightInput.setLayout(new BoxLayout(rightInput, BoxLayout.X_AXIS));
+        rightInput.add(new JLabel(" right"));
+        JTextField rightText = new JTextField(Integer.toString(rightGreenTime));
+        rightInput.add(rightText);
+        rightInput.add(new JLabel("초 "));
+
+        JPanel greenInput = new JPanel();
+        greenInput.setLayout(new BoxLayout(greenInput, BoxLayout.X_AXIS));
+        greenInput.add(new JLabel(" green"));
+        JTextField greenText = new JTextField(Integer.toString(greenTime));
+        greenInput.add(greenText);
+        greenInput.add(new JLabel("초 "));
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
+        inputPanel.setSize(300, 150);
+        inputPanel.add(redInput);
+        inputPanel.add(yellowInput);
+        inputPanel.add(rightInput);
+        inputPanel.add(greenInput);
+
+        JButton inputButton = new JButton("입력");
+        inputButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                redTime = Integer.parseInt(redText.getText());
+                yellowTime = Integer.parseInt(yellowText.getText());
+                rightGreenTime = Integer.parseInt(rightText.getText());
+                greenTime = Integer.parseInt(greenText.getText());
+            }
+        });
+
+        guiText.add(inputPanel, BorderLayout.CENTER);
+        guiText.add(inputButton, BorderLayout.EAST);
+
         c.add(guiTrafficLight);
         c.add(guiButton);
         c.add(guiText);
